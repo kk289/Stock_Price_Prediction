@@ -186,7 +186,7 @@ y_svm_pred = svm_model.predict(x_test)
 svm_kfold = model_selection.KFold(n_splits=20, random_state=seed, shuffle=True)
 results_kfold = model_selection.cross_val_score(svm_model, x_test, y_test.astype('int'), cv=svm_kfold)
 print("Accuracy: ", results_kfold.mean()*100)
-# Accuracy: 99.91435220285842
+# Accuracy: 99.99301338392715
 
 # Plot Actual vs Predicted
 plot_svm_df = pd.DataFrame({'Actual':y_test,'Pred':y_svm_pred})
@@ -196,6 +196,17 @@ plt.grid(which ='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
 plt.savefig(os.path.join(images_folder, "11_actualVSpredictedSVM.png"))
 
+# RMSE (Root Mean Square Error)
+from sklearn.metrics import mean_squared_error , r2_score
+import math
+lr_mse = math.sqrt(mean_squared_error(y_test,y_pred))
+print('Linear Model Root mean square error', lr_mse)
+
+knn_mse = math.sqrt(mean_squared_error(y_test,y_knn_pred))
+print('KNN Model Root mean square error', knn_mse)
+
+svm_mse = math.sqrt(mean_squared_error(y_test,y_svm_pred))
+print('SVM Model Root mean square error', svm_mse)
 
 
 

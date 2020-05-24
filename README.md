@@ -12,13 +12,12 @@ Stock Market Basic Influencing Factor:
 Libaries
 
 - Pandas
-- Sklearn
+- Scikit-learn
 - Matplotlib
 - Numpy
 - Pandas_datareader.data
 - Seaborn
-- datetime
-- os
+- OS
 
 Coding
 
@@ -106,3 +105,12 @@ Accuracy: 99.99301338392715
 #### Plot Actual vs Predicted Value of SVM
 ![SVM model: Actual Price vs Predicted Value](images/11_actualVSpredictedSVM.png)
 
+### RMSE (Root Mean Square Error)
+
+Root Mean Square Error is the Standard Deviation of residuals, which are a measure of how far data points are from the regression. Or in simple terms how concentrated the data points are around the best fit line.
+
+Linear Model RMSE: 3.0534992716871643e-14
+
+KNN Model RMSE: 1.191675778610913
+
+SVM Model RMSE: 0.5182098703394772
