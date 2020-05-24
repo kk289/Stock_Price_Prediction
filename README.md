@@ -32,7 +32,36 @@ $corr=df.corr(method='pearson')$
 
 Pearson Correlation Coefficient is the most popular way to measure correlation, the range of values varies from -1 to 1. In mathematics/physics terms it can be understood as if two features are positively correlated then they are directly proportional and if they share negative correlation then they are inversely proportional.
 
-![GitHub Logo](images/logo.png)
+![Pearson Correlation Coefficient](images/1_corr_visual.png)
+
+### EDA (Explanatory Data Analysis)
+
+#### Visualize the Dependent variable with independent variable
+![Apple Stocks Closing Price History 2012- 2020](images/2_priceHistory.png)
+
+#### Bar plot of Open Price VS Close Price (Year 2012)
+Let's take a look at the bar plot of top 50 data which is from 2012 year
+![Apple' Open VS Close: Year 2012](images/3_openVScloseYear2012.png)
+
+#### Bar plot of Open Price VS Close Price (Year 2020)
+Let's take a look at the bar plot of top 50 data which is from 2020 year
+![Apple' Open VS Close: Year 2020](images/4_openVScloseYear2020.png)
+
+#### Bar plot of High Price of a day VS Close Price (Year 2012)
+Let's take a look at the bar plot of top 50 data which is from 2012 year
+![Apple' High VS Close: Year 2012](images/5_openVScloseYear2012.png)
+
+#### Bar plot of High Price of a day VS Close Price (Year 2020)
+Let's take a look at the bar plot of top 50 data which is from 2020 year
+![Apple' High VS Close: Year 2020](images/6_highVScloseYear2020.png)
+
+#### Bar plot of Low Price of a day VS Close Price (Year 2012)
+Let's take a look at the bar plot of top 50 data which is from 2012 year
+![Apple' Low VS Close: Year 2012](images/7_lowVScloseYear2012.png)
+
+#### Bar plot of Low Price of a day VS Close Price (Year 2020)
+Let's take a look at the bar plot of top 50 data which is from 2020 year
+![Apple' Low VS Close: Year 2020](images/8_lowVScloseYear2020.png)
 
 ### Linear Regression Model
 Linear Model Cross-Validation:
@@ -43,12 +72,15 @@ number of splits: 20
 
 $Accuracy: 99.99726749725694$
 
+#### Plot Actual vs Predicted Value of Linear Regression Model
+![Linear Regression Value: Actual Price vs Predicted Value](images/9_actualVSpredictedLRM.png)
+
 ### KNN: K-nearest neighbor Regression Model
 
 k neighbors = 7
 
 $Accuracy: 99.93212195740352$
 
-
-
+#### Plot Actual vs Predicted Value of kNN Model
+![kNN model: Actual Price vs Predicted Value](images/10_actualVSpredictedkNN.png)
 
