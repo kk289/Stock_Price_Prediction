@@ -146,7 +146,7 @@ print("Accuracy: ", results_kfold.mean()*100)
 
 # Plot Actual vs Predicted Value
 plot_df = pd.DataFrame({'Actual':y_test,'Pred':y_pred})
-plot_df.head(30).plot(kind='bar',figsize=(16,8))
+plot_df.head(10).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
@@ -168,7 +168,7 @@ print("Accuracy: ", results_kfold.mean()*100)
 
 # Plot Actual vs Predicted
 plot_knn_df = pd.DataFrame({'Actual':y_test,'Pred':y_knn_pred})
-plot_knn_df.head(30).plot(kind='bar',figsize=(16,8))
+plot_knn_df.head(10).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
@@ -182,12 +182,20 @@ svm_regressor = SVR(kernel='linear')
 svm_model = svm_regressor.fit(x_train,y_train)
 y_svm_pred = svm_model.predict(x_test)
 
+# SVM Cross-Validation
+svm_kfold = model_selection.KFold(n_splits=20, random_state=seed, shuffle=True)
+results_kfold = model_selection.cross_val_score(svm_model, x_test, y_test.astype('int'), cv=svm_kfold)
+print("Accuracy: ", results_kfold.mean()*100)
+# Accuracy: 99.91435220285842
+
 # Plot Actual vs Predicted
 plot_svm_df = pd.DataFrame({'Actual':y_test,'Pred':y_svm_pred})
-plot_svm_df.head(30).plot(kind='bar',figsize=(16,8))
+plot_svm_df.head(10).plot(kind='bar',figsize=(16,8))
 plt.grid(which ='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which ='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
 plt.savefig(os.path.join(images_folder, "11_actualVSpredictedSVM.png"))
+
+
 
 

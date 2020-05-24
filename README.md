@@ -101,6 +101,8 @@ Accuracy: 99.91435220285842
 
 ### SVM Support Vector Machine Regression Model
 
+Accuracy: 99.99301338392715
+
 #### Plot Actual vs Predicted Value of SVM
 ![SVM model: Actual Price vs Predicted Value](images/11_actualVSpredictedSVM.png)
 
