@@ -146,7 +146,7 @@ print("Accuracy: ", results_kfold.mean()*100)
 
 # Plot Actual vs Predicted Value
 plot_df = pd.DataFrame({'Actual':y_test,'Pred':y_pred})
-plot_df.head(20).plot(kind='bar',figsize=(16,8))
+plot_df.head(30).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
@@ -168,8 +168,26 @@ print("Accuracy: ", results_kfold.mean()*100)
 
 # Plot Actual vs Predicted
 plot_knn_df = pd.DataFrame({'Actual':y_test,'Pred':y_knn_pred})
-plot_knn_df.head(20).plot(kind='bar',figsize=(16,8))
+plot_knn_df.head(30).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
 plt.savefig(os.path.join(images_folder, "10_actualVSpredictedkNN.png"))
+
+# Model 3: SVM Support Vector Machine Regression Model
+
+# SVM Model Training and Testing
+from sklearn.svm import SVR
+svm_regressor = SVR(kernel='linear')
+svm_model = svm_regressor.fit(x_train,y_train)
+y_svm_pred = svm_model.predict(x_test)
+
+# Plot Actual vs Predicted
+plot_svm_df = pd.DataFrame({'Actual':y_test,'Pred':y_svm_pred})
+plot_svm_df.head(30).plot(kind='bar',figsize=(16,8))
+plt.grid(which ='major', linestyle='-', linewidth='0.5', color='green')
+plt.grid(which ='minor', linestyle=':', linewidth='0.5', color='black')
+#plt.show()
+plt.savefig(os.path.join(images_folder, "11_actualVSpredictedSVM.png"))
+
+

@@ -99,3 +99,8 @@ Accuracy: 99.91435220285842
 #### Plot Actual vs Predicted Value of kNN Model
 ![kNN model: Actual Price vs Predicted Value](images/10_actualVSpredictedkNN.png)
 
+### SVM Support Vector Machine Regression Model
+
+#### Plot Actual vs Predicted Value of SVM
+![SVM model: Actual Price vs Predicted Value](images/11_actualVSpredictedSVM.png)
+
