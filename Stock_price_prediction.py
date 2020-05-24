@@ -207,6 +207,3 @@ print('KNN Model Root mean square error', knn_mse)
 
 svm_mse = math.sqrt(mean_squared_error(y_test,y_svm_pred))
 print('SVM Model Root mean square error', svm_mse)
-
-
-
