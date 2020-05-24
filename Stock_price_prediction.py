@@ -9,6 +9,9 @@ import numpy as np
 import pandas_datareader.data as web
 import datetime
 import seaborn as sb
+import os
+
+images_folder = "images"
 
 seed = 0
 
@@ -39,7 +42,7 @@ print(corr)
 
 # Visulize correlation
 corr_visual = sb.heatmap(corr,xticklabels=corr.columns, yticklabels=corr.columns,cmap='RdBu_r', annot=True, linewidth=0.5)
-plt.savefig("1_corr_visual.png")
+plt.savefig(os.path.join(images_folder, "1_corr_visual.png"))
 
 # Visualize the Dependent variable with Independent Features
 #prepare dataset to work with 
@@ -52,49 +55,49 @@ plt.xlabel('Date',fontsize=18)
 plt.ylabel('Close Price US($)',fontsize=18)
 plt.style.use('fivethirtyeight')
 #plt.show()
-plt.savefig("2_priceHistory.png")
+plt.savefig(os.path.join(images_folder, "2_priceHistory.png"))
 
 # Plot Open vs Close (Year 2012)
 appl_df[['Open','Close']].head(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
-plt.savefig("3_openVScloseYear2012.png")
+plt.savefig(os.path.join(images_folder, "3_openVScloseYear2012.png"))
 
 # Plot Open vs Close (Year 2020)
 appl_df[['Open','Close']].tail(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
-plt.savefig("4_openVScloseYear2020.png")
+plt.savefig(os.path.join(images_folder, "4_openVScloseYear2020.png"))
 
 # Plot High vs Close (Year 2012)
 appl_df[['High','Close']].head(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
-plt.savefig("5_highVScloseYear2012.png")
+plt.savefig(os.path.join(images_folder, "5_highVScloseYear2012.png"))
 
 # Plot High vs Close (Year 2020)
 appl_df[['High','Close']].tail(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
-plt.savefig("6_highVScloseYear2020.png")
+plt.savefig(os.path.join(images_folder, "6_highVScloseYear2020.png"))
 
 # Plot Low vs Close (Year 2012)
 appl_df[['Low','Close']].head(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
-plt.savefig("7_lowVScloseYear2012.png")
+plt.savefig(os.path.join(images_folder, "7_lowVScloseYear2012.png"))
 
 # Plot Low vs Close (Year 2020)
 appl_df[['Low','Close']].tail(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
-plt.savefig("8_lowVScloseYear2020.png")
+plt.savefig(os.path.join(images_folder, "8_lowVScloseYear2020.png"))
 
 if __name__ == '__main__':
     np.random.seed(seed)
@@ -147,7 +150,7 @@ plot_df.head(20).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
-plt.savefig("9_actualVSpredictedLRM.png")
+plt.savefig(os.path.join(images_folder, "9_actualVSpredictedLRM.png"))
 
 ## Model 2: KNN: K-nearest neighbor Regression Model
 
@@ -169,4 +172,4 @@ plot_knn_df.head(20).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
-plt.savefig("10_actualVSpredictedkNN.png")
+plt.savefig(os.path.join(images_folder, "10_actualVSpredictedkNN.png"))

@@ -32,6 +32,8 @@ $corr=df.corr(method='pearson')$
 
 Pearson Correlation Coefficient is the most popular way to measure correlation, the range of values varies from -1 to 1. In mathematics/physics terms it can be understood as if two features are positively correlated then they are directly proportional and if they share negative correlation then they are inversely proportional.
 
+![GitHub Logo](images/logo.png)
+
 ### Linear Regression Model
 Linear Model Cross-Validation:
 
@@ -46,4 +48,7 @@ $Accuracy: 99.99726749725694$
 k neighbors = 7
 
 $Accuracy: 99.93212195740352$
+
+
+
 
