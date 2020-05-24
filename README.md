@@ -1,6 +1,6 @@
 # Stock_Price_Prediction
 
-Stock Name: AAPL (Apple)
+#### Stock Name: AAPL (Apple)
 
 Stock Market Basic Influencing Factor:
 
