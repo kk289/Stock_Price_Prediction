@@ -20,7 +20,6 @@ Libaries
 - datetime
 - os
 
-
 Coding
 
 1. Dataset Import
@@ -43,6 +42,7 @@ end = datetime.datetime(2020, 5, 22)
 Correlation is a measure of association or dependency between two features i.e. how much Y will vary with a variation in X. The correlation method that we will use is the Pearson Correlation.
 
 Using Pearson Correlation coefficient:
+
 corr=df.corr(method='pearson')
 
 Pearson Correlation Coefficient is the most popular way to measure correlation, the range of values varies from -1 to 1. In mathematics/physics terms it can be understood as if two features are positively correlated then they are directly proportional and if they share negative correlation then they are inversely proportional.
@@ -64,7 +64,7 @@ Let's take a look at the bar plot of top 50 data which is from 2020 year
 
 #### Bar plot of High Price of a day VS Close Price (Year 2012)
 Let's take a look at the bar plot of top 50 data which is from 2012 year
-![Apple' High VS Close: Year 2012](images/5_openVScloseYear2012.png)
+![Apple' High VS Close: Year 2012](images/5_highVScloseYear2012.png)
 
 #### Bar plot of High Price of a day VS Close Price (Year 2020)
 Let's take a look at the bar plot of top 50 data which is from 2020 year
