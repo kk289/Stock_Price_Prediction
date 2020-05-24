@@ -31,3 +31,19 @@ Using Pearson Correlation coefficient:
 $corr=df.corr(method='pearson')$
 
 Pearson Correlation Coefficient is the most popular way to measure correlation, the range of values varies from -1 to 1. In mathematics/physics terms it can be understood as if two features are positively correlated then they are directly proportional and if they share negative correlation then they are inversely proportional.
+
+### Linear Regression Model
+Linear Model Cross-Validation:
+
+Basically Cross Validation is a technique using which Model is evaluated on the dataset on which it is not trained i.e. it can be a test data or can be another set as per availability or feasibility.
+
+number of splits: 20
+
+$Accuracy: 99.99726749725694$
+
+### KNN: K-nearest neighbor Regression Model
+
+k neighbors = 7
+
+$Accuracy: 99.93212195740352$
+

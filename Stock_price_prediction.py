@@ -1,6 +1,7 @@
 # Stock Price Prediction Model for Netfliximport pandas as pd
 
 # Importing Libraries
+import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
@@ -8,7 +9,8 @@ import numpy as np
 import pandas_datareader.data as web
 import datetime
 import seaborn as sb
-# pandas_datareader library allows us to connect to the website and extract data directly from internet sources in our case we are extracting data from Yahoo Finance API.
+
+seed = 0
 
 start = datetime.datetime(2012, 1, 1)
 end = datetime.datetime(2020, 5, 22)
@@ -37,7 +39,7 @@ print(corr)
 
 # Visulize correlation
 corr_visual = sb.heatmap(corr,xticklabels=corr.columns, yticklabels=corr.columns,cmap='RdBu_r', annot=True, linewidth=0.5)
-plt.savefig("corr_visual.png")
+plt.savefig("1_corr_visual.png")
 
 # Visualize the Dependent variable with Independent Features
 #prepare dataset to work with 
@@ -50,42 +52,52 @@ plt.xlabel('Date',fontsize=18)
 plt.ylabel('Close Price US($)',fontsize=18)
 plt.style.use('fivethirtyeight')
 #plt.show()
+plt.savefig("2_priceHistory.png")
 
 # Plot Open vs Close (Year 2012)
 appl_df[['Open','Close']].head(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
+plt.savefig("3_openVScloseYear2012.png")
 
 # Plot Open vs Close (Year 2020)
 appl_df[['Open','Close']].tail(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
+plt.savefig("4_openVScloseYear2020.png")
 
 # Plot High vs Close (Year 2012)
 appl_df[['High','Close']].head(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
+plt.savefig("5_highVScloseYear2012.png")
 
 # Plot High vs Close (Year 2020)
 appl_df[['High','Close']].tail(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
+plt.savefig("6_highVScloseYear2020.png")
 
 # Plot Low vs Close (Year 2012)
 appl_df[['Low','Close']].head(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
+plt.savefig("7_lowVScloseYear2012.png")
 
 # Plot Low vs Close (Year 2020)
 appl_df[['Low','Close']].tail(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 #plt.show()
+plt.savefig("8_lowVScloseYear2020.png")
+
+if __name__ == '__main__':
+    np.random.seed(seed)
 
 # Model Training and Testing
 
@@ -105,6 +117,56 @@ Y = final_appl.iloc[:, 5]
 print(X.shape)  #output: (2111, 6)
 print(Y.shape)  #output: (2111,)
 
+# Splitting the dataset into train and test
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test= train_test_split(X,Y,test_size=.25)
+print(x_train.shape) #output: (1583, 6)
+print(x_test.shape)  #output: (528, 6)  
+print(y_train.shape) #output: (1583,)
+print(y_test.shape)  #output: (528,)
+#y_test to be evaluated with y_pred for Diff models
 
+## Model 1: Linear Regression Model
 
+# Linear Regression Model Training and Testing
+lr_model = LinearRegression()
+lr_model.fit(x_train,y_train)
+y_pred = lr_model.predict(x_test)
 
+# Linear Model Cross-Validation
+from sklearn import model_selection
+from sklearn.model_selection import KFold
+kfold = model_selection.KFold(n_splits=20, random_state=seed, shuffle=True)
+results_kfold = model_selection.cross_val_score(lr_model, x_test, y_test.astype('int'), cv=kfold)
+print("Accuracy: ", results_kfold.mean()*100)
+# Accuracy: 99.99743780203187
+
+# Plot Actual vs Predicted Value
+plot_df = pd.DataFrame({'Actual':y_test,'Pred':y_pred})
+plot_df.head(20).plot(kind='bar',figsize=(16,8))
+plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
+plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
+#plt.show()
+plt.savefig("9_actualVSpredictedLRM.png")
+
+## Model 2: KNN: K-nearest neighbor Regression Model
+
+# KNN Model Training and Testing
+from sklearn.neighbors import KNeighborsRegressor
+knn_regressor = KNeighborsRegressor(n_neighbors = 4)
+knn_model = knn_regressor.fit(x_train,y_train)
+y_knn_pred = knn_model.predict(x_test)
+
+# KNN Cross-Validation
+knn_kfold = model_selection.KFold(n_splits=20, random_state=seed, shuffle=True)
+results_kfold = model_selection.cross_val_score(knn_model, x_test, y_test.astype('int'), cv=knn_kfold)
+print("Accuracy: ", results_kfold.mean()*100)
+# Accuracy: 99.91435220285842
+
+# Plot Actual vs Predicted
+plot_knn_df = pd.DataFrame({'Actual':y_test,'Pred':y_knn_pred})
+plot_knn_df.head(20).plot(kind='bar',figsize=(16,8))
+plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
+plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
+#plt.show()
+plt.savefig("10_actualVSpredictedkNN.png")
