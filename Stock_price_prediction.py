@@ -49,34 +49,61 @@ plt.plot(appl_df['Date'],appl_df['Close'])
 plt.xlabel('Date',fontsize=18)
 plt.ylabel('Close Price US($)',fontsize=18)
 plt.style.use('fivethirtyeight')
-plt.show()
+#plt.show()
 
 # Plot Open vs Close (Year 2012)
 appl_df[['Open','Close']].head(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
-plt.show()
+#plt.show()
 
 # Plot Open vs Close (Year 2020)
 appl_df[['Open','Close']].tail(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
-plt.show()
+#plt.show()
 
 # Plot High vs Close (Year 2012)
 appl_df[['High','Close']].head(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
-plt.show()
+#plt.show()
 
 # Plot High vs Close (Year 2020)
 appl_df[['High','Close']].tail(50).plot(kind='bar',figsize=(16,8))
 plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
 plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
-plt.show()
+#plt.show()
 
+# Plot Low vs Close (Year 2012)
+appl_df[['Low','Close']].head(50).plot(kind='bar',figsize=(16,8))
+plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
+plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
+#plt.show()
 
+# Plot Low vs Close (Year 2020)
+appl_df[['Low','Close']].tail(50).plot(kind='bar',figsize=(16,8))
+plt.grid(which='major', linestyle='-', linewidth='0.5', color='green')
+plt.grid(which='minor', linestyle=':', linewidth='0.5', color='black')
+#plt.show()
 
+# Model Training and Testing
+
+# Date format is DateTime 
+appl_df['Year'] = df['Date'].dt.year
+appl_df['Month'] = df['Date'].dt.month
+appl_df['Day'] = df['Date'].dt.day
+
+# final dataset for model training
+final_appl = appl_df[['Day', 'Month', 'Year', 'High', 'Open', 'Low', 'Close']]
+print(final_appl.head(10))
+print(final_appl.tail(10))
+
+#separate Independent and dependent variable
+X = final_appl.iloc[:,final_appl.columns != 'Close']
+Y = final_appl.iloc[:, 5]
+print(X.shape)  #output: (2111, 6)
+print(Y.shape)  #output: (2111,)
 
 
 
