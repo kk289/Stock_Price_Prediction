@@ -12,7 +12,8 @@ Coding
 
 1. Dataset Import
 
-$pandas datareader$ library allows us to connect to the website and extract data directly from internet sources in our case we are extracting data from Yahoo Finance API.
+$pandas datareader$ library allows us to connect to the website and extract data directly from internet sources, in this case we are extracting data from Yahoo Finance API.
+I have kept APPL.csv file too (if anyone wants to play with it.)
 
 Using following code:
 $df = web.DataReader("AAPL", 'yahoo', start, end)$
