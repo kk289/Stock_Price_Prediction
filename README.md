@@ -114,3 +114,14 @@ Linear Model RMSE: 3.0534992716871643e-14
 KNN Model RMSE: 1.191675778610913
 
 SVM Model RMSE: 0.5182098703394772
+
+### R-Squared Error
+R-Squared score varies between 0 to 100%.
+
+Mathematical Formula for R-squared score:(y_test[i] — y_pred[i]) **2
+
+Linear R-Squared: 1.0
+
+KNN R-Squared: 0.999629726665711
+
+SVM R-Squared: 0.9999299807307482
