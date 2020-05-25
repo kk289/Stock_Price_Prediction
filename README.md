@@ -9,7 +9,7 @@ Stock Market Basic Influencing Factor:
 3. After-Hour Trading
 
 
-Libaries
+Libraries
 
 - Pandas
 - Scikit-learn
